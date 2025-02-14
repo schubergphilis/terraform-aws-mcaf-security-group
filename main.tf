@@ -18,8 +18,8 @@ resource "aws_security_group" "default" {
   }
 }
 
-resource "aws_vpc_security_group_ingress_rule" "default" {
-  for_each = { for key, rule in var.rules : key => rule if rule.type == "ingress" }
+resource "aws_vpc_security_group_egress_rule" "default" {
+  for_each = var.egress_rules
 
   cidr_ipv4                    = each.value.cidr_ipv4
   cidr_ipv6                    = each.value.cidr_ipv6
@@ -33,8 +33,8 @@ resource "aws_vpc_security_group_ingress_rule" "default" {
   to_port                      = each.value.to_port
 }
 
-resource "aws_vpc_security_group_egress_rule" "default" {
-  for_each = { for key, rule in var.rules : key => rule if rule.type == "egress" }
+resource "aws_vpc_security_group_ingress_rule" "default" {
+  for_each = var.ingress_rules
 
   cidr_ipv4                    = each.value.cidr_ipv4
   cidr_ipv6                    = each.value.cidr_ipv6
