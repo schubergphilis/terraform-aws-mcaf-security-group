@@ -36,11 +36,11 @@ variable "ingress_rules" {
     cidr_ipv4                    = optional(string)
     cidr_ipv6                    = optional(string)
     description                  = string
-    from_port                    = optional(number, 0)
+    from_port                    = optional(number)
     ip_protocol                  = optional(string, "-1")
     prefix_list_id               = optional(string)
     referenced_security_group_id = optional(string)
-    to_port                      = optional(number, 0)
+    to_port                      = optional(number)
   }))
   default     = {}
   description = "Security group ingress rules."
