@@ -6,8 +6,8 @@ variable "description" {
 
 variable "egress_rules" {
   type = map(object({
-    cidr_ipv4                    = optional(string)
-    cidr_ipv6                    = optional(string)
+    cidr_ipv4                    = optional(list(string))
+    cidr_ipv6                    = optional(list(string))
     description                  = string
     from_port                    = optional(number)
     ip_protocol                  = optional(string, "-1")
@@ -33,8 +33,8 @@ variable "egress_rules" {
 
 variable "ingress_rules" {
   type = map(object({
-    cidr_ipv4                    = optional(string)
-    cidr_ipv6                    = optional(string)
+    cidr_ipv4                    = optional(list(string))
+    cidr_ipv6                    = optional(list(string))
     description                  = string
     from_port                    = optional(number)
     ip_protocol                  = optional(string, "-1")
