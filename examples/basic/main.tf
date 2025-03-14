@@ -10,7 +10,7 @@ module "basic" {
 
   ingress_rules = {
     private_access = {
-      cidr_ipv4   = "10.64.0.0/12"
+      cidr_ipv4   = ["10.64.0.0/20", "10.67.0.0/20"]
       description = "Allow access from this range"
     }
   }
