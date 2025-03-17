@@ -2,6 +2,9 @@
 
 Terraform module to manage an AWS Security Group.
 
+> [!NOTE]  
+> This module only supports `name_prefix` as input and not `name`. Changing a security group’s `name` in Terraform forces its replacement, which can cause deployment failures due to dependencies with other AWS resources. Since AWS does not allow deleting a security group that is still associated with another resource. Using `name_prefix` avoids unnecessary recreation, and `create_before_destroy` ensures smooth updates without disruption.
+
 ## Usage
 
 <!-- BEGIN_TF_DOCS -->

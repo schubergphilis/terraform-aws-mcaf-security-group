@@ -2,6 +2,18 @@
 
 This document captures required refactoring on your part when upgrading to a module version that contains breaking changes.
 
+## Upgrading to v2.0.0
+
+### Key Changes
+
+- Drop support for `var.name`. Changing a security group’s `name` in Terraform forces its replacement, which can cause deployment failures due to dependencies with other AWS resources. Since AWS does not allow deleting a security group that is still associated with another resource. Using `name_prefix` avoids unnecessary recreation, and `create_before_destroy` ensures smooth updates without disruption.
+
+#### Variables
+
+The following variables have been removed:
+
+- `name`
+
 ## Upgrading to v1.0.0
 
 ### Key Changes
