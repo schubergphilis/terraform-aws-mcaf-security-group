@@ -60,10 +60,9 @@ resource "aws_security_group" "default" {
   #checkov:skip=CKV2_AWS_5: "Ensure that Security Groups are attached to another resource" - False positive.
 
   description            = var.description
-  name                   = var.name
   name_prefix            = var.name_prefix
   revoke_rules_on_delete = var.revoke_rules_on_delete
-  tags                   = var.tags
+  tags                   = merge(var.tags, { "NamePrefix" = var.name_prefix })
   vpc_id                 = var.vpc_id
 
   lifecycle {

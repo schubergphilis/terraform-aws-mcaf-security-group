@@ -58,21 +58,9 @@ variable "ingress_rules" {
   }
 }
 
-variable "name" {
-  type        = string
-  default     = null
-  description = "Name of the security group. Conflicts with `name_prefix`."
-
-  validation {
-    condition     = var.name == null || var.name_prefix == null
-    error_message = "Only one of 'name' or 'name_prefix' can be defined."
-  }
-}
-
 variable "name_prefix" {
   type        = string
-  default     = null
-  description = "Name prefix of the security group. Conflicts with `name`."
+  description = "Name prefix of the security group."
 }
 
 variable "revoke_rules_on_delete" {
